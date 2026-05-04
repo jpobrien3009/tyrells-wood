@@ -486,6 +486,20 @@
       ],
     });
 
+    // Session B: Track shots button (active player only)
+    if (window.TWShotsUI && round.players[0]) {
+      const trackBtn = el('button', {
+        class: 'track-shots-trigger',
+        type: 'button',
+        onclick: () => { sheet.close(); window.TWShotsUI.openEntrySheet(hole.number); },
+      }, [
+        document.createTextNode('Track shots — ' + round.players[0].name),
+        el('span', { class: 'meta' }, 'GPS log'),
+        el('span', { class: 'arrow' }, '→'),
+      ]);
+      sheet.body.appendChild(trackBtn);
+    }
+
     entries.forEach((e) => sheet.body.appendChild(buildRow(e)));
   }
 
@@ -523,6 +537,19 @@
         },
       ],
     });
+
+    // Session B: Shots review entry point (active player only)
+    if (window.TWShotsUI && round.players[0]) {
+      const reviewBtn = el('button', {
+        class: 'track-shots-trigger',
+        type: 'button',
+        onclick: () => window.TWShotsUI.openShotsReview(round),
+      }, [
+        document.createTextNode('Shots review — ' + round.players[0].name),
+        el('span', { class: 'arrow' }, '→'),
+      ]);
+      sheet.body.appendChild(reviewBtn);
+    }
 
     renderRoundDetail(sheet.body, round, holes, { editable: true });
   }

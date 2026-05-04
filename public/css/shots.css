@@ -1,0 +1,389 @@
+/* Tyrrells Wood Golf — Shot tracking UI styles
+ * Scoped under .shots-* / .shot-* / .club-* / .chip-* / .bag-* / .review-*
+ * to avoid colliding with existing app + scoring styles.
+ */
+
+/* ---------- Status bar ---------- */
+.shots-status {
+  background: rgba(176, 122, 76, 0.14);
+  color: var(--tw-text);
+  border: 1px solid rgba(176, 122, 76, 0.4);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  margin-bottom: 0.55rem;
+}
+.shots-status.fresh {
+  background: rgba(26, 61, 31, 0.08);
+  border-color: rgba(26, 61, 31, 0.25);
+  color: var(--tw-green);
+}
+
+.shots-pin-dist {
+  font-family: 'Playfair Display', 'DM Serif Display', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--tw-gold);
+  margin-bottom: 0.55rem;
+  text-align: center;
+}
+
+.shots-empty {
+  text-align: center;
+  color: var(--tw-text-muted);
+  padding: 1.4rem 0.5rem;
+  font-size: 0.88rem;
+}
+
+/* ---------- Shot rows ---------- */
+.shot-list {
+  background: var(--tw-card);
+  border: 1px solid var(--tw-border);
+  border-radius: 0.6rem;
+  overflow: hidden;
+  margin-bottom: 0.55rem;
+}
+.shot-row {
+  display: grid;
+  grid-template-columns: 1.7rem 1fr auto auto 2rem;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--tw-border);
+  cursor: pointer;
+  background: var(--tw-card);
+}
+.shot-row:last-child { border-bottom: none; }
+.shot-row:active { background: rgba(26, 61, 31, 0.06); }
+.shot-row-n {
+  font-weight: 700;
+  color: var(--tw-text-muted);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+.shot-row-club {
+  font-weight: 600;
+  color: var(--tw-text);
+  font-size: 0.9rem;
+}
+.shot-row-meta {
+  font-size: 0.78rem;
+  color: var(--tw-text-muted);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+.shot-row-dist {
+  font-family: 'Playfair Display', 'DM Serif Display', Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--tw-green);
+  min-width: 3rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.shot-row-dist.manual::after {
+  content: ' *';
+  color: var(--tw-gold);
+}
+.shot-row-delete {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--tw-border);
+  color: var(--tw-text-muted);
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1;
+  padding: 0;
+}
+.shot-row-delete:active {
+  background: rgba(177, 67, 67, 0.1);
+  color: #b14343;
+  border-color: #d99c9c;
+}
+
+.shots-totals {
+  background: var(--tw-bg);
+  border: 1px solid var(--tw-border);
+  border-radius: 0.6rem;
+  padding: 0.55rem 0.75rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.85rem;
+  color: var(--tw-text);
+  text-align: center;
+  font-weight: 600;
+}
+
+.shots-undo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background: var(--tw-green);
+  color: var(--tw-cream);
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.85rem;
+}
+.shots-undo .btn {
+  flex: 0 0 auto;
+  background: var(--tw-cream);
+  color: var(--tw-green);
+  border: none;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.82rem;
+  min-height: 32px;
+}
+
+/* ---------- Action row ---------- */
+.shots-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+.shots-actions .btn { flex: 1; }
+.shots-log-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Entry panel ---------- */
+.shots-entry-head {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--tw-green);
+  margin-bottom: 0.55rem;
+  letter-spacing: 0.02em;
+}
+
+.chip-section {
+  margin-bottom: 0.6rem;
+}
+.chip-section-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--tw-text-muted);
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.chip-row {
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 0.15rem;
+}
+.chip-row::-webkit-scrollbar { display: none; }
+
+.chip-button {
+  flex-shrink: 0;
+  background: var(--tw-bg);
+  border: 1px solid var(--tw-border);
+  border-radius: 0.45rem;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--tw-text);
+  cursor: pointer;
+  min-height: 38px;
+  text-transform: capitalize;
+}
+.chip-button.active {
+  background: var(--tw-green);
+  color: var(--tw-cream);
+  border-color: var(--tw-green);
+}
+.chip-button:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Club grid ---------- */
+.club-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+}
+.club-button {
+  background: var(--tw-bg);
+  border: 1px solid var(--tw-border);
+  border-radius: 0.45rem;
+  padding: 0.55rem 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--tw-text);
+  cursor: pointer;
+  min-height: 44px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.club-button.active {
+  background: var(--tw-gold);
+  color: var(--tw-green);
+  border-color: var(--tw-gold);
+}
+.club-button:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.bag-edit-link {
+  display: block;
+  background: transparent;
+  border: none;
+  color: var(--tw-text-muted);
+  font-size: 0.78rem;
+  padding: 0.35rem 0;
+  margin-top: 0.2rem;
+  text-align: right;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.shots-dist-preview {
+  font-family: 'Playfair Display', 'DM Serif Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--tw-green);
+  text-align: center;
+  background: rgba(26, 61, 31, 0.06);
+  border-radius: 0.5rem;
+  padding: 0.45rem;
+  margin: 0.4rem 0;
+}
+
+/* ---------- Track-shots trigger (added inside score sheet) ---------- */
+.track-shots-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--tw-bg);
+  border: 1px solid var(--tw-border);
+  border-left: 4px solid var(--tw-gold);
+  border-radius: 0.55rem;
+  padding: 0.55rem 0.75rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--tw-green);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+.track-shots-trigger:active { background: rgba(201, 169, 97, 0.18); }
+.track-shots-trigger .arrow {
+  font-family: 'Playfair Display', 'DM Serif Display', Georgia, serif;
+  color: var(--tw-gold);
+  font-size: 1.05rem;
+}
+.track-shots-trigger .meta {
+  font-size: 0.75rem;
+  color: var(--tw-text-muted);
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+
+/* ---------- Bag settings ---------- */
+.bag-help {
+  font-size: 0.83rem;
+  color: var(--tw-text-muted);
+  margin: 0 0 0.6rem;
+}
+.bag-row {
+  display: grid;
+  grid-template-columns: 1fr 5rem;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+.bag-row input {
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--tw-border);
+  border-radius: 0.4rem;
+  font-size: 0.9rem;
+  background: var(--tw-bg);
+  color: var(--tw-text);
+  min-height: 38px;
+}
+.bag-row input:focus {
+  outline: 2px solid var(--tw-gold);
+  outline-offset: 1px;
+}
+
+/* ---------- Shots review ---------- */
+.review-summary {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+.review-stat {
+  background: var(--tw-card);
+  border: 1px solid var(--tw-border);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.review-stat-num {
+  font-family: 'Playfair Display', 'DM Serif Display', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--tw-green);
+  line-height: 1.1;
+}
+.review-stat-lbl {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tw-text-muted);
+  font-weight: 600;
+  margin-top: 0.15rem;
+}
+
+.club-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--tw-card);
+  border: 1px solid var(--tw-border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  font-size: 0.85rem;
+}
+.club-table th,
+.club-table td {
+  padding: 0.45rem 0.6rem;
+  text-align: left;
+  border-bottom: 1px solid var(--tw-border);
+}
+.club-table th {
+  background: var(--tw-bg);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tw-text-muted);
+  font-weight: 700;
+}
+.club-table td:nth-child(2),
+.club-table td:nth-child(3),
+.club-table th:nth-child(2),
+.club-table th:nth-child(3) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.club-table tr:last-child td { border-bottom: none; }
+
+/* ---------- Mobile tweaks ---------- */
+@media (max-width: 380px) {
+  .club-grid { grid-template-columns: repeat(3, 1fr); }
+  .club-button { font-size: 0.78rem; padding: 0.5rem 0.25rem; }
+  .review-summary { grid-template-columns: repeat(3, 1fr); }
+  .shot-row { grid-template-columns: 1.5rem 1fr auto auto; }
+  .shot-row-delete { display: none; }
+}
