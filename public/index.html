@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1a3d1f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Tyrrells Wood" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <title>Tyrrells Wood Golf</title>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/scoring.css" />
+</head>
+<body>
+  <header class="topbar">
+    <button id="menuBtn" class="icon-btn" aria-label="Menu">☰</button>
+    <div class="title">
+      <h1>Tyrrells Wood</h1>
+      <span class="subtitle" id="holeSubtitle">Hole 1 · Par 4 · 331y</span>
+    </div>
+    <button id="gpsBtn" class="icon-btn" aria-label="Toggle GPS">📍</button>
+  </header>
+
+  <main id="map" aria-label="Course map"></main>
+
+  <section class="hole-info" id="holeInfo">
+    <div class="hole-info-row">
+      <div class="metric">
+        <span class="metric-label">Par</span>
+        <span class="metric-value" id="parValue">4</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">SI</span>
+        <span class="metric-value" id="siValue">18</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">White</span>
+        <span class="metric-value" id="whiteYards">331y</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Yellow</span>
+        <span class="metric-value" id="yellowYards">315y</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Red</span>
+        <span class="metric-value" id="redYards">286y</span>
+      </div>
+    </div>
+    <p class="hole-description" id="holeDescription"></p>
+    <p class="hole-tip" id="holeTip"></p>
+  </section>
+
+  <nav class="hole-nav">
+    <button id="prevHole" class="nav-btn" aria-label="Previous hole">‹</button>
+    <div class="hole-picker" id="holePicker"></div>
+    <button id="nextHole" class="nav-btn" aria-label="Next hole">›</button>
+  </nav>
+
+  <script src="js/app.js" defer></script>
+  <script src="js/scoring.js" defer></script>
+  <script src="js/ui-scoring.js" defer></script>
+</body>
+</html>

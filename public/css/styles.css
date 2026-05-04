@@ -1,0 +1,266 @@
+:root {
+  --tw-green: #1a3d1f;
+  --tw-green-light: #2d5d34;
+  --tw-cream: #f5f1e8;
+  --tw-gold: #c9a961;
+  --tw-text: #1a1a1a;
+  --tw-text-muted: #666;
+  --tw-bg: #fafaf7;
+  --tw-card: #ffffff;
+  --tw-border: #e5e2d8;
+  --tw-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--tw-bg);
+  color: var(--tw-text);
+  overscroll-behavior: none;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  height: 100dvh;
+}
+
+/* Top bar */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  padding-top: max(0.75rem, env(safe-area-inset-top));
+  background: var(--tw-green);
+  color: var(--tw-cream);
+  box-shadow: var(--tw-shadow);
+  z-index: 1000;
+}
+
+.topbar .title {
+  flex: 1;
+  min-width: 0;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.topbar .subtitle {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+.icon-btn {
+  background: transparent;
+  border: 1px solid rgba(245, 241, 232, 0.3);
+  color: var(--tw-cream);
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.icon-btn:active {
+  background: rgba(245, 241, 232, 0.15);
+}
+
+.icon-btn.active {
+  background: var(--tw-gold);
+  border-color: var(--tw-gold);
+  color: var(--tw-green);
+}
+
+/* Map */
+#map {
+  width: 100%;
+  height: 100%;
+  background: #2a2a2a;
+}
+
+/* Hole info panel */
+.hole-info {
+  background: var(--tw-card);
+  border-top: 1px solid var(--tw-border);
+  padding: 0.75rem 1rem;
+  max-height: 30vh;
+  overflow-y: auto;
+}
+
+.hole-info-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.4rem 0.2rem;
+  background: var(--tw-bg);
+  border-radius: 0.5rem;
+}
+
+.metric-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tw-text-muted);
+  font-weight: 600;
+}
+
+.metric-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--tw-green);
+}
+
+.hole-description {
+  margin: 0.4rem 0 0.25rem;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--tw-text);
+}
+
+.hole-tip {
+  margin: 0;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--tw-text-muted);
+}
+
+.hole-tip:empty,
+.hole-description:empty {
+  display: none;
+}
+
+/* Hole nav */
+.hole-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  background: var(--tw-card);
+  border-top: 1px solid var(--tw-border);
+}
+
+.nav-btn {
+  background: var(--tw-green);
+  color: var(--tw-cream);
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  font-weight: 300;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.nav-btn:disabled {
+  opacity: 0.4;
+}
+
+.nav-btn:active:not(:disabled) {
+  background: var(--tw-green-light);
+}
+
+.hole-picker {
+  flex: 1;
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hole-picker::-webkit-scrollbar {
+  display: none;
+}
+
+.hole-chip {
+  scroll-snap-align: center;
+  flex-shrink: 0;
+  background: var(--tw-bg);
+  border: 1px solid var(--tw-border);
+  border-radius: 0.5rem;
+  padding: 0.35rem 0.55rem;
+  min-width: 2.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--tw-text);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.hole-chip .chip-num {
+  font-size: 0.95rem;
+}
+
+.hole-chip .chip-par {
+  font-size: 0.65rem;
+  color: var(--tw-text-muted);
+  font-weight: 500;
+}
+
+.hole-chip.active {
+  background: var(--tw-green);
+  color: var(--tw-cream);
+  border-color: var(--tw-green);
+}
+
+.hole-chip.active .chip-par {
+  color: rgba(245, 241, 232, 0.7);
+}
+
+/* Map markers */
+.tee-marker, .green-marker {
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-align: center;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.gps-pulse {
+  background: #2196f3;
+  border: 3px solid white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 0 0 6px rgba(33, 150, 243, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 6px rgba(33, 150, 243, 0.3); }
+  50% { box-shadow: 0 0 0 12px rgba(33, 150, 243, 0.1); }
+  100% { box-shadow: 0 0 0 6px rgba(33, 150, 243, 0.3); }
+}

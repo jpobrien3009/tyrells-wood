@@ -1,0 +1,22 @@
+{
+  "name": "Tyrrells Wood Golf",
+  "short_name": "Tyrrells Wood",
+  "description": "Hole-by-hole guide and GPS rangefinder for Tyrrells Wood Golf Club, Leatherhead.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1a3d1f",
+  "theme_color": "#1a3d1f",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
